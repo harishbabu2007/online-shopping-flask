@@ -1,0 +1,84 @@
+{%extends "signbase.html"%}
+{%block title%}Cart{%endblock%}
+
+{%block content%}
+    <style>
+        .size-card {
+            height: auto;
+            width: 200px;
+        }
+
+        .card-i-pos {
+            padding-top: 10px;
+            padding-left: 65px;
+        }
+    </style>
+    {%with messages = get_flashed_messages()%}
+        {%if messages%}
+            {%for msg in messages%}
+                <script>
+                    alert(`{{msg}}`)
+                </script>
+            {%endfor%}
+        {%endif%}
+    {%endwith%}
+    <div class="row">
+        <div class="container-fluid col-sm-4 col-lg-9">
+            <br>
+            <div class="card-deck row row-cols-1 row-cols-md-5" style="margin-right: 0px;">
+                {%for item in values %}
+                    {%if item in values%}
+                        <div class="col mb-4">
+                            <div class="card size-card mb-4">
+                                <!-- Card image -->
+                                <div class="view overlay">
+                                <img style="height: 110px; width: 120px;" class="card-img-top card-i-pos" src="{{item.picture}}"
+                                    alt="Card image cap">
+                                <a href="/product/{{item.product_id}}">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                                </div>
+                            
+                                <!-- Card content -->
+                                <div class="card-body">
+                            
+                                <!-- Title -->
+                                <h4 class="card-title">{{item.name}}</h4>
+                                <!-- Text -->
+                                <p class="card-text"><b style="color: black;">₹{{item.price}}</b></p>
+                                <form action="#" method="POST">
+                                    <button class="btn btn-primary" name="name" type="submit" value="{{item.name}}">Remove from cart</button>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card -->
+                    {%else%}
+                    {%endif%}
+                {%endfor%}
+            </div>
+            <br>
+        </div>
+        <hr>
+        <div class="col-sm-4 col-lg-3">
+            
+            <div class="jumbotron">
+                <h2 class="display-4">Your Cart</h2>
+                <br>
+                {%for item in values %}
+                    {%if item in values%}
+                        <p class="lead">{{item.name}} &nbsp;&nbsp;:&nbsp;&nbsp; ₹{{item.price}}</p>
+                    {%else%}
+                        <h2>Nothing here</h2>
+                    {%endif%}
+                {%endfor%}
+                <br>
+                <p class="lead">Total &nbsp;&nbsp;:&nbsp;&nbsp; ₹{{total}}</p>
+                <a href="/"><button class="btn btn-primary">Add more items</button></a>
+                <hr class="my-4">
+                <a class="btn btn-primary btn-lg" href="/proceedtoorder" role="button">Proceed to order</a>
+            </div>
+        </div>
+    </div>
+    
+{%endblock%}

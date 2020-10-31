@@ -1,0 +1,100 @@
+{%extends "nonsignbase.html"%}
+{%block title%}E-Cart{%endblock%}
+
+{%block content%}
+    <style>
+        .size-card {
+            height: auto;
+            width: 200px;
+        }
+
+        .card-i-pos {
+            padding-top: 10px;
+            padding-left: 65px;
+        }
+    </style>
+    <!-- News jumbotron -->
+    <div class="jumbotron text-center hoverable p-4">
+
+        <!-- Grid row -->
+        <div class="row">
+    
+        <!-- Grid column -->
+        <div class="col-md-4 offset-md-1 mx-3 my-3">
+    
+            <!-- Featured image -->
+            <div class="view overlay">
+            <img src="{{values.picture}}" class="img-fluid" alt="Sample image for first version of blog listing">
+            <a>
+                <div class="mask rgba-white-slight"></div>
+            </a>
+            </div>
+    
+        </div>
+        <!-- Grid column -->
+    
+        <!-- Grid column -->
+        <div class="col-md-7 text-md-left ml-3 mt-3">
+    
+    
+            <h4 class="h4 mb-4">{{values.name}}</h4>
+            <h3 class="h3 mb-4">₹{{values.price}}</h3>
+    
+            <p class="font-weight-normal">{{values.description}}</p>
+            <p class="font-weight-normal"><strong>Company: {{values.company}}</strong></p>
+    
+            <form action="#" method="POST">
+                <button type="submit" class="btn btn-success">Add To Cart</button>
+            </form>
+    
+        </div>
+        <!-- Grid column -->
+    
+        </div>
+        <!-- Grid row -->
+    
+    </div>
+    <br>
+    <div class="container-fluid">
+        <h1>Some more products for you</h1>
+        <br>
+        <div class="card-deck row row-cols-1 row-cols-md-5" style="margin-right: 100px;">
+           
+            {%for item in products %}
+                {%if item in products%}
+                    <div class="col mb-4">
+                        <div class="card size-card mb-4">
+                            <!-- Card image -->
+                            <div class="view overlay">
+                            <img style="height: 110px; width: 120px;" class="card-img-top card-i-pos" src="{{item.picture}}"
+                                alt="Card image cap">
+                            <a href="/product/{{item.product_id}}">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                            </div>
+                        
+                            <!-- Card content -->
+                            <div class="card-body">
+                        
+                            <!-- Title -->
+                            <h4 class="card-title">{{item.name}}</h4>
+                            <!-- Text -->
+                            <p class="card-text"><b style="color: black;">₹{{item.price}}</b></p>
+                            <p class="card-text">{{item.description}}</p>
+                            <br>
+                            <p class="card-text">Company: {{item.company}}</p>
+                            <!-- Button -->
+                            <a href="/product/{{item.product_id}}" class="btn btn-primary">View more</a>
+                        
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card -->
+                    
+                {%else%}
+                    <h2>Nothing here</h2>
+                {%endif%}
+            {%endfor%}
+        </div>
+    </div>
+{%endblock%}

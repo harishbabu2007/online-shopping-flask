@@ -1,0 +1,67 @@
+{%extends "signbase.html"%}
+{%block title%}E-Cart{%endblock%}
+
+{%block content%}
+    <style>
+        .size-card {
+            height: auto;
+            width: 200px;
+        }
+
+        .card-i-pos {
+            padding-top: 10px;
+            padding-left: 65px;
+        }
+    </style>
+    {%with messages = get_flashed_messages()%}
+        {%if messages%}
+            {%for msg in messages%}
+                <script>
+                    alert(`{{msg}}`)
+                </script>
+            {%endfor%}
+        {%endif%}
+    {%endwith%}
+    <div class="container-fluid">
+        <br>
+        <div class="card-deck row row-cols-1 row-cols-md-5" style="margin-right: 100px;">
+           
+            {%for item in values %}
+                {%if item in values%}
+                    <div class="col mb-4">
+                        <div class="card size-card mb-4">
+                            <!-- Card image -->
+                            <div class="view overlay">
+                            <img style="height: 110px; width: 120px;" class="card-img-top card-i-pos" src="{{item.picture}}"
+                                alt="Card image cap">
+                            <a href="/product/{{item.product_id}}">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                            </div>
+                        
+                            <!-- Card content -->
+                            <div class="card-body">
+                        
+                            <!-- Title -->
+                            <h4 class="card-title">{{item.name}}</h4>
+                            <!-- Text -->
+                            <p class="card-text"><b style="color: black;">₹{{item.price}}</b></p>
+                            <p class="card-text">{{item.description}}</p>
+                            <br>
+                            <p class="card-text">Company: {{item.company}}</p>
+                            <!-- Button -->
+                            <a href="/product/{{item.product_id}}" class="btn btn-primary">View more</a>
+                        
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card -->
+                    
+                {%else%}
+                    <h2>Nothing here</h2>
+                {%endif%}
+            {%endfor%}
+        </div>
+    </div>
+    
+{%endblock%}
