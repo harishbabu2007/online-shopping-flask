@@ -7,7 +7,7 @@ Want to test the app
 
 Credentials for admin interface (for adding products)
   - Username : harish
-  -password : harish
+  - password : harish
   
  
 please share this project to support my content
