@@ -1,0 +1,23 @@
+{%extends "adminbase.html"%}
+{%block title%}E-Cart | Admin{%endblock%}
+
+{%block content%}
+    {%with messages = get_flashed_messages()%}
+        {%if messages%}
+            {%for msg in messages%}
+                <script>
+                    alert(`{{msg}}`)
+                </script>
+            {%endfor%}
+        {%endif%}
+    {%endwith%}
+<form action="#" method="POST">
+    <div class="container-fluid">
+        <div class="text-center"><h1>Delete Product</h1></div>
+        <br>
+        <h3>Product ID</h3>
+        <input type="number" name="product_id" placeholder="Product id" required><br><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{%endblock%}

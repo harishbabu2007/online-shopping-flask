@@ -1,0 +1,46 @@
+{%extends "adminbase.html"%}
+{%block title%}E-Cart | Admin{%endblock%}
+
+{%block content%}
+    <div class="text-center">
+        <h1>Your Products</h1><br>
+        <form action="/search" method="GET">
+            <label>Search</label>
+            <input type="text" name="query" placeholder="Search">
+        </form><br>
+    </div>
+    <table class="table">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Product ID</th>
+            <th scope="col">Picture</th>
+            <th scope="col">Price</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Company</th>
+            <th scope="col">Description</th>
+            <th scope="col">Category</th>
+            <th scope="col">Purchases</th>
+        </tr>
+        <tbody>
+            {%for item in values %}
+                {%if item in values%}
+                    <tr>
+                        <td>{{item.name}}</td>
+                        <td>{{item.product_id}}</td>
+                        <td>
+                            <img src="{{item.picture}}">
+                        </td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.stock}}</td>
+                        <td>{{item.company}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.purchases}}</td>
+                    </tr>
+                {%else%}
+                    <h2>Nothing here</h2>
+                {%endif%}
+            {%endfor%}
+        </tbody>
+    </table>
+{%endblock%}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <title>E-Cart | Login</title>
+</head>
+<style>
+    .position-card {
+        height: auto;
+        width: 500px;
+        margin: auto;
+        margin-top: 7%;
+    }
+</style>
+<body>
+    <!-- Material form login -->
+    <div class="card position-card">
+
+        <h5 class="card-header info-color white-text text-center py-4">
+        <strong>Login</strong>
+        </h5>
+    
+        <!--Card content-->
+        <div class="card-body px-lg-5 pt-0">
+    
+        <!-- Form -->
+        <form class="text-center" style="color: #757575;" action="#" method="POST">
+            {%with messages = get_flashed_messages()%}
+                {%if messages%}
+                    {%for msg in messages%}
+                        <p style="color:red;">{{msg}}</p>
+                    {%endfor%}
+                {%endif%}
+            {%endwith%}
+    
+            <!-- Email -->
+            <div class="md-form">
+                <input name="username" type="text" id="materialLoginFormEmail" class="form-control" required>
+                <label for="materialLoginFormEmail">Username</label>
+            </div>
+    
+            <!-- Password -->
+            <div class="md-form">
+                <input name="password" type="password" id="materialLoginFormPassword" class="form-control" required>
+                <label for="materialLoginFormPassword">Password</label>
+            </div>
+    
+            <!-- Sign in button -->
+            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Login</button>
+    
+        </form>
+        <!-- Form -->
+    
+        </div>
+    
+    </div>
+  <!-- Material form login -->
+</body>
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+</html>

@@ -1,0 +1,46 @@
+{%extends "adminbase.html"%}
+{%block title%}E-Cart | Admin{%endblock%}
+
+{%block content%}
+    {%with messages = get_flashed_messages()%}
+        {%if messages%}
+            {%for msg in messages%}
+                <script>
+                    alert(`{{msg}}`)
+                </script>
+            {%endfor%}
+        {%endif%}
+    {%endwith%}
+<form action="#" method="POST">
+    <div class="container-fluid">
+        <div class="text-center"><h1>Add Product</h1></div>
+        <br>
+        <h3>Name</h3>
+        <input type="text" name="name" placeholder="Name" required><br><br>
+        <h3>Picture(Link)</h3>
+        <input type="text" name="picture" placeholder="Picture" required><br><br>
+        <h3>Product_id</h3>
+        <input type="number" name="product_id" placeholder="Product id" required><br><br>
+        <h3>Price</h3>
+        <input type="number" name="price" placeholder="price" required><br><br><br>
+        <h3>Category</h3>
+        <div class="form-check">
+            <input name="category" value="electronics" type="radio" class="form-check-input" id="materialUnchecked" name="materialExampleRadios">
+            <label class="form-check-label" for="materialUnchecked">Electronics</label>
+        </div>
+        <div class="form-check">
+            <input name="category" value="clothing" type="radio" class="form-check-input" id="materialUnchecked" name="materialExampleRadios">
+            <label class="form-check-label" for="materialUnchecked">Clothing</label>
+        </div><br><br>
+        <h3>Stock</h3>
+        <input type="number" name="stock" placeholder="stock" required><br><br>
+        <h3>Company</h3>
+        <input type="text" name="company" placeholder="Company" required><br><br>
+        <h3>Search Terms (space separated values)</h3>
+        <input type="text" name="search_terms" placeholder="Search Terms" required><br><br>
+        <h3>description</h3>
+        <textarea name="description" cols="30" rows="10" required></textarea><br><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{%endblock%}
